@@ -1,17 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-	api "./webserver/api"
+	w "github.com/robhittme/golang-api/webserver"
+	m "github.com/robhittme/golang-api/model"
 )
 
 func main() {
-	router := ApiRouter()
+	m.Init()
+	w.InitRoutes()
 
-	fmt.Println("Server starting on port 8080")
-	err := http.ListenAndServer("8080", router)
-	if err != nil {
-		fmt.Println(err)
-	}
 }

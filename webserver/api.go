@@ -3,13 +3,15 @@ package webserver
 import (
 	"encoding/json"
 	"net/http"
+	"fmt"
+	"log"
 )
 
 type Response struct {
 	Message string `json:"message"`
 }
 
-func ApiRouter() http.Handler {
+func InitRoutes() http.Handler {
 	router := http.NewServeMux()
 
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -22,5 +24,8 @@ func ApiRouter() http.Handler {
 		json.NewEncoder(w).Encode(response)
 	})
 
+	fmt.Printf("Server listening on port 8080\n")
+	log.Fatal(http.ListenAndServe(":8080", router))
 	return router
 }
+
