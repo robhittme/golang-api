@@ -24,7 +24,7 @@ func InitRoutes() http.Handler {
 		json.NewEncoder(w).Encode(response)
 	})
 
-	fmt.Printf("Server listening on port 8080\n")
+	fmt.Printf("Server listening on port :8080\n")
 	log.Fatal(http.ListenAndServe(":8080", router))
 	return router
 }
